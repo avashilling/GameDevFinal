@@ -25,11 +25,12 @@ public abstract class Node : MonoBehaviour
         col = GetComponent<Collider>();
     }
 
-    private void OnMouseDown()
-    {
-        if (!isCameraMoving)
-            Arrive();
-    }
+    //private void OnMouseDown()
+    //{
+    //    Debug.Log("OnMouseDown called on Node: " + name);
+    //    if (!isCameraMoving)
+    //        Arrive();
+    //}
 
     public void Arrive()
     {
