@@ -2,60 +2,55 @@ using UnityEngine;
 
 public class ClickRaycaster : MonoBehaviour
 {
-    [Tooltip("Main camera rendering the scene")]
+    [Header("Camera Settings")]
     public Camera mainCamera;
+    public LayerMask interactableLayers = ~0; // Layers for nodes & items
 
-    [Tooltip("Optional: LayerMask to only raycast interactable objects")]
-    public LayerMask interactableLayers = ~0; // default: everything
-
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!Input.GetMouseButtonDown(0)) return;
+
+        if (mainCamera == null) mainCamera = Camera.main;
+
+        // Convert mouse to normalized viewport coordinates
+        Vector3 viewportPoint = new Vector3(
+            Input.mousePosition.x / Screen.width,
+            Input.mousePosition.y / Screen.height,
+            0
+        );
+
+        Ray ray = mainCamera.ViewportPointToRay(viewportPoint);
+
+        // Raycast all hits (including triggers)
+        RaycastHit[] hits = Physics.RaycastAll(ray, 1000f, interactableLayers, QueryTriggerInteraction.Collide);
+
+        if (hits.Length == 0) return;
+
+        // Sort by distance
+        System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+        foreach (RaycastHit hit in hits)
         {
-            if (mainCamera == null)
-                mainCamera = Camera.main;
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            if (interactable == null)
+                interactable = hit.collider.GetComponentInParent<IInteractable>();
 
-            // Convert mouse to normalized viewport coordinates
-            Vector3 viewportPoint = new Vector3(
-                Input.mousePosition.x / Screen.width,
-                Input.mousePosition.y / Screen.height,
-                0
-            );
-
-            // Generate ray from camera
-            Ray ray = mainCamera.ViewportPointToRay(viewportPoint);
-
-            // Raycast all hits, including triggers
-            RaycastHit[] hits = Physics.RaycastAll(ray, 1000f, interactableLayers, QueryTriggerInteraction.Collide);
-
-            if (hits.Length == 0)
+            if (interactable != null)
             {
-                Debug.Log("Clicked on nothing.");
-                return;
+                interactable.Interact(GameManager.Instance.currentlyHeldItem);
+                break; // Stop after first interactable
             }
 
-            // Sort hits by distance so closest object is processed first
-            System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+            Node node = hit.collider.GetComponent<Node>();
+            if (node == null)
+                node = hit.collider.GetComponentInParent<Node>();
 
-            foreach (RaycastHit hit in hits)
+            if (node != null)
             {
-                Debug.Log($"Hit collider: {hit.collider.name} | type: {hit.collider.GetType()}");
-
-                // Try to get Node component on the collider itself
-                Node node = hit.collider.GetComponent<Node>();
-                if (node == null)
-                {
-                    // Optional: also check parent in case collider is child
-                    node = hit.collider.GetComponentInParent<Node>();
-                }
-
-                if (node != null)
-                {
-                    Debug.Log("Calling Arrive() on Node: " + node.name);
-                    node.Arrive();
-                    break; // stop at first interactable node
-                }
+                node.Arrive();
+                break; // Stop at first node
             }
         }
     }
 }
+

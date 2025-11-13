@@ -9,6 +9,8 @@ public abstract class Node : MonoBehaviour
     //Nodes other than left/right/back that the player can go to
     //like interactable props or alernate locations
     public List<Node> reachableNodes = new List<Node>();
+    public List<Interactable> interactables = new List<Interactable>();
+
     public Node left;
     public Node right;
     public Node back;
@@ -36,32 +38,26 @@ public abstract class Node : MonoBehaviour
     {
         if (isCameraMoving) return;
 
-        // Leave current node
         if (GameManager.Instance.currentNode != null)
-        {
             GameManager.Instance.currentNode.Leave();
-        }
 
-        // Set current node
         GameManager.Instance.currentNode = this;
-
-        // Disable input
         isCameraMoving = true;
-
-        // Start smooth camera move
         StartCoroutine(MoveCameraToNode(Camera.main.transform, cameraPosition.position, cameraPosition.rotation, 1.0f));
 
-        // Disable own collider, and enable all colliders that player should be able to reach from here
-        // This is so that own collider doesn't overshadow clicks within it
         if (col != null)
         {
             col.enabled = false;
 
             foreach (Node node in reachableNodes)
-            {
                 if (node.col != null)
                     node.col.enabled = true;
-            }
+
+            // Enable interactables for this node
+            foreach (var interactable in interactables)
+                if (interactable != null)
+                    interactable.GetComponent<Collider>().enabled = true;
+                    Debug.Log("enabling collider for interactable");
         }
     }
 
@@ -72,12 +68,16 @@ public abstract class Node : MonoBehaviour
             col.enabled = true;
 
             foreach (Node node in reachableNodes)
-            {
                 if (node.col != null)
                     node.col.enabled = false;
-            }
+
+            // Disable interactables
+            foreach (var interactable in interactables)
+                if (interactable != null)
+                    interactable.GetComponent<Collider>().enabled = false;
         }
     }
+
 
     private IEnumerator MoveCameraToNode(Transform cam, Vector3 targetPos, Quaternion targetRot, float duration)
     {
