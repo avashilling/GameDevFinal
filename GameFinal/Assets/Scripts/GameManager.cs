@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     public List<InventoryItem> inventory = new List<InventoryItem>();
     public InventoryItem currentlyHeldItem;
 
+    [Header("Reward Item Sprites")]
+    public Sprite keySprite;         //hardcoded key for now, once we implement game the key will be a reward for finishing
+
+
     public delegate void InventoryChangeHandler();
     public event InventoryChangeHandler OnInventoryChanged;
 
@@ -48,9 +52,15 @@ public class GameManager : MonoBehaviour
         }
 
         inventory.Add(newItem);
+
+        // Play pickup sound if an AudioSource is attached
+        var audio = GetComponent<AudioSource>();
+        if (audio != null) audio.Play();
+
         OnInventoryChanged?.Invoke();
         return true;
     }
+
 
     // Remove an item by type
     public void RemoveItem(ItemType itemType)
@@ -85,4 +95,17 @@ public class GameManager : MonoBehaviour
             OnInventoryChanged?.Invoke();
         }
     }
+
+    public void startArcadeGame()
+    {
+        InventoryItem keyItem = new InventoryItem();
+        keyItem.itemType = ItemType.Key;
+        keyItem.icon = keySprite;
+
+        AddItem(keyItem);
+
+        Debug.Log("Arcade game complete! Key awarded.");
+    }
+
+
 }

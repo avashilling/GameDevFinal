@@ -9,7 +9,8 @@ public class CursorManager : MonoBehaviour
     public Image cursorImage;
     public Sprite defaultCursorSprite;
     public Vector2 cursorOffset;
-    public float heldItemScale = 0.6f;
+    public float heldItemSize = 8f;
+    public float defaultCursorSize = 4f;
 
     private Vector3 targetPos;
 
@@ -56,15 +57,14 @@ public class CursorManager : MonoBehaviour
     public void SetCursorToDefault()
     {
         cursorImage.sprite = defaultCursorSprite;
-        cursorImage.rectTransform.localScale = Vector3.one;
-        cursorImage.enabled = true;
+        cursorImage.rectTransform.sizeDelta = new Vector2(defaultCursorSize, defaultCursorSize);
     }
+
 
     public void SetCursorToItem(Sprite itemSprite)
     {
         cursorImage.sprite = itemSprite;
-        cursorImage.rectTransform.localScale = Vector3.one * heldItemScale;
-        cursorImage.enabled = true;
+        cursorImage.rectTransform.sizeDelta = new Vector2(heldItemSize, heldItemSize);
     }
 
     private void UpdateHeldCursor()
