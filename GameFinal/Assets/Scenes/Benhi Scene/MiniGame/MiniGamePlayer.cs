@@ -70,51 +70,41 @@ using UnityEngine;
 public class MiniGamePlayer : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float moveSpeed = 500f;
-    public RectTransform playerRect;
+    public float moveSpeed = 500f;            // Adjust for UI movement
+    public RectTransform playerRect;          // Player UI element
     public MiniGameController miniGameController;
 
     private Vector2 moveInput;
-    private bool gameActive = true;  // Prevent multiple success/fail calls
 
     private void Update()
     {
-        if (playerRect == null || miniGameController == null || !gameActive) return;
+        if (playerRect == null || miniGameController == null) return;
 
         // Input
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput.Normalize();
 
-        // Move player using ONLY anchoredPosition (local UI space)
-        Vector2 newPos = playerRect.anchoredPosition + moveInput * moveSpeed * Time.deltaTime;
+        // Move player
+        playerRect.anchoredPosition += moveInput * moveSpeed * Time.deltaTime;
 
-        // Clamp inside panel (assuming bounds are in local UI space)
-        newPos.x = Mathf.Clamp(newPos.x, miniGameController.MinBounds.x, miniGameController.MaxBounds.x);
-        newPos.y = Mathf.Clamp(newPos.y, miniGameController.MinBounds.y, miniGameController.MaxBounds.y);
-
-        playerRect.anchoredPosition = newPos;
+        // Clamp inside panel
+        Vector3 pos = playerRect.position;
+        pos.x = Mathf.Clamp(pos.x, miniGameController.MinBounds.x, miniGameController.MaxBounds.x);
+        pos.y = Mathf.Clamp(pos.y, miniGameController.MinBounds.y, miniGameController.MaxBounds.y);
+        playerRect.position = pos;
 
         // Wall collision
         if (miniGameController.CheckWallCollision())
         {
-            gameActive = false;
             miniGameController.Fail();
-            return;
         }
 
         // Goal detection
         if (miniGameController.goalRect != null &&
             miniGameController.RectOverlaps(playerRect, miniGameController.goalRect))
         {
-            gameActive = false;
             miniGameController.Success();
         }
-    }
-
-    // Call this if you need to restart the minigame
-    public void ResetGame()
-    {
-        gameActive = true;
     }
 }
