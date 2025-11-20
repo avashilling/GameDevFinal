@@ -11,14 +11,17 @@ public class GameManager : MonoBehaviour
     public InventoryItem currentlyHeldItem;
 
     [Header("Reward Item Sprites")]
-    public Sprite keySprite;         //hardcoded key for now, once we implement game the key will be a reward for finishing
-
-
-    public delegate void InventoryChangeHandler();
-    public event InventoryChangeHandler OnInventoryChanged;
+    public Sprite keySprite;
 
     [Header("Node State")]
     public Node currentNode;
+
+    [Header("Audio")]
+    public AudioSource pickupAudio;        // <-- assign your item pickup sound
+    public AudioSource movementAudio;      // <-- assign node movement sound (different clip)
+
+    public delegate void InventoryChangeHandler();
+    public event InventoryChangeHandler OnInventoryChanged;
 
     private void Awake()
     {
@@ -47,7 +50,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Add an item to inventory (goes to leftmost empty slot)
+    // ------------------------------------------------------------
+    // INVENTORY LOGIC
+    // ------------------------------------------------------------
+
     public bool AddItem(InventoryItem newItem)
     {
         if (inventory.Count >= maxSlots)
@@ -58,16 +64,14 @@ public class GameManager : MonoBehaviour
 
         inventory.Add(newItem);
 
-        // Play pickup sound if an AudioSource is attached
-        var audio = GetComponent<AudioSource>();
-        if (audio != null) audio.Play();
+        // Play pickup sound
+        if (pickupAudio != null)
+            pickupAudio.Play();
 
         OnInventoryChanged?.Invoke();
         return true;
     }
 
-
-    // Remove an item by type
     public void RemoveItem(ItemType itemType)
     {
         InventoryItem item = inventory.Find(i => i.itemType == itemType);
@@ -81,7 +85,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Remove currently held item
     public void RemoveSelectedItem()
     {
         if (currentlyHeldItem == null) return;
@@ -91,7 +94,6 @@ public class GameManager : MonoBehaviour
         OnInventoryChanged?.Invoke();
     }
 
-    // Select an inventory item by index
     public void SelectItem(int index)
     {
         if (index >= 0 && index < inventory.Count)
@@ -99,6 +101,23 @@ public class GameManager : MonoBehaviour
             currentlyHeldItem = inventory[index];
             OnInventoryChanged?.Invoke();
         }
+    }
+
+    // ------------------------------------------------------------
+    // NODE MOVEMENT LOGIC
+    // ------------------------------------------------------------
+
+    // Call this from Node.Arrive() when the player moves
+    public void SetCurrentNode(Node newNode)
+    {
+        if (newNode == null) return;
+        if (newNode == currentNode) return;
+
+        currentNode = newNode;
+
+        // Play node movement sound
+        if (movementAudio != null)
+            movementAudio.Play();
     }
 
     public void startArcadeGame()
@@ -111,6 +130,4 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Arcade game complete! Key awarded.");
     }
-
-
 }

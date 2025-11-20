@@ -379,7 +379,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 75430386}
-  reachableNodes: []
+  reachableNodes:
+  - {fileID: 278189616}
+  - {fileID: 226356622}
   interactables: []
   left: {fileID: 740229360}
   right: {fileID: 1287510052}
@@ -623,6 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b127dd9a3b7d5a4faa83c97cbc5e92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  col: {fileID: 0}
 --- !u!65 &129207251
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -713,7 +716,7 @@ MonoBehaviour:
   cameraPosition: {fileID: 136135690}
   reachableNodes: []
   interactables:
-  - {fileID: 0}
+  - {fileID: 686545312}
   left: {fileID: 0}
   right: {fileID: 0}
   back: {fileID: 993941559}
@@ -1064,6 +1067,7 @@ Transform:
   - {fileID: 1427291186}
   - {fileID: 410500878}
   - {fileID: 1661024137}
+  - {fileID: 775258032}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &226356619
@@ -1135,7 +1139,7 @@ MonoBehaviour:
   cameraPosition: {fileID: 226356620}
   reachableNodes: []
   interactables:
-  - {fileID: 0}
+  - {fileID: 129207250}
   left: {fileID: 0}
   right: {fileID: 0}
   back: {fileID: 75430385}
@@ -2145,7 +2149,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 787262276, guid: cd44100826caf404cbf62bef3c369eb5, type: 3}
+  m_Sprite: {fileID: -1044584325, guid: 1bc729bdb5f42c344b48af46221bc4b9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5152,7 +5156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 679716486}
   reachableNodes: []
-  interactables: []
+  interactables:
+  - {fileID: 946446779}
   left: {fileID: 1257244590}
   right: {fileID: 512769731}
   back: {fileID: 1287510052}
@@ -5236,6 +5241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b37d675e9d1b114fb2482b386ffa795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  col: {fileID: 0}
   itemData:
     itemType: 1
     icon: {fileID: 21300000, guid: 57f91975f8b81d042a7427097874d963, type: 3}
@@ -5600,7 +5606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 740229361}
-  reachableNodes: []
+  reachableNodes:
+  - {fileID: 993941559}
   interactables: []
   left: {fileID: 778943616}
   right: {fileID: 75430385}
@@ -5782,6 +5789,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757950759}
   m_Mesh: {fileID: -3669953070638682642, guid: e1eb336259d59cb4ca8961bf29c076ef, type: 3}
+--- !u!4 &775258032 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2643a54af53791b40a5457711fb37034, type: 3}
+  m_PrefabInstance: {fileID: 959421097}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &778943615
 GameObject:
   m_ObjectHideFlags: 0
@@ -6623,7 +6635,7 @@ Transform:
   m_GameObject: {fileID: 946446777}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.30145645, y: 3.2847176, z: 207.69003}
+  m_LocalPosition: {x: -0.30145645, y: 9.2, z: 207.69003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6641,6 +6653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655b6c1bed07da64887bfee3179bdbad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  col: {fileID: 0}
   sceneName: EndScreen
 --- !u!65 &946446780
 BoxCollider:
@@ -6755,7 +6768,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 222414541}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2643a54af53791b40a5457711fb37034, type: 3}
       propertyPath: m_LocalScale.x
@@ -6763,7 +6776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2643a54af53791b40a5457711fb37034, type: 3}
       propertyPath: m_LocalScale.y
-      value: 843.88
+      value: 843.87994
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2643a54af53791b40a5457711fb37034, type: 3}
       propertyPath: m_LocalScale.z
@@ -6771,15 +6784,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2643a54af53791b40a5457711fb37034, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 104.3
+      value: -46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2643a54af53791b40a5457711fb37034, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 42.2
+      value: 8.900002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2643a54af53791b40a5457711fb37034, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -134.6
+      value: -55.500008
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2643a54af53791b40a5457711fb37034, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7087,9 +7100,9 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 2a1d111e6e823ee43adab647e18e12ec, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.295
+  m_Volume: 0.068
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -7850,6 +7863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b37d675e9d1b114fb2482b386ffa795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  col: {fileID: 0}
   itemData:
     itemType: 2
     icon: {fileID: -511323600, guid: a9c39c4cd0693284da0fdaf81561643c, type: 3}
@@ -8074,7 +8088,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -213787582, guid: 39ef17885ac89e34e8a536fc5c0f13d2, type: 3}
+  m_Sprite: {fileID: 203633224, guid: 02720a6298002b74cae73ee42426111f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8781,7 +8795,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 1287510053}
-  reachableNodes: []
+  reachableNodes:
+  - {fileID: 679716484}
   interactables: []
   left: {fileID: 75430385}
   right: {fileID: 778943616}
@@ -9042,6 +9057,7 @@ GameObject:
   - component: {fileID: 1353882090}
   - component: {fileID: 1353882089}
   - component: {fileID: 1353882091}
+  - component: {fileID: 1353882092}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -9068,6 +9084,8 @@ MonoBehaviour:
     icon: {fileID: 0}
   keySprite: {fileID: 21300000, guid: 5982b7339c8752841a62fd6159de1534, type: 3}
   currentNode: {fileID: 2050604788}
+  pickupAudio: {fileID: 1353882091}
+  movementAudio: {fileID: 1353882092}
 --- !u!4 &1353882090
 Transform:
   m_ObjectHideFlags: 0
@@ -9097,6 +9115,103 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 20591086337d96a4ea87e9c61d6b59e3, type: 3}
   m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1353882092
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353882088}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 2b0c3de1c5e793a4da9692a9dbc664fd, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -9228,6 +9343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b37d675e9d1b114fb2482b386ffa795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  col: {fileID: 0}
   itemData:
     itemType: 1
     icon: {fileID: 21300000, guid: f02815701dd803d48b1e9b886ff1bec5, type: 3}
@@ -10368,7 +10484,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a2e85bc66ab66bc4b94698427e63e2df, type: 2}
     - target: {fileID: 919132149155446097, guid: 58dfc463e869b6042ac854b5b51220c6, type: 3}
       propertyPath: m_Name
-      value: ATV (1)
+      value: ArcadeSide
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11178,7 +11294,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -213787582, guid: 39ef17885ac89e34e8a536fc5c0f13d2, type: 3}
+  m_Sprite: {fileID: 203633224, guid: 02720a6298002b74cae73ee42426111f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11342,7 +11458,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1e1f591b56988e84f89152aeabd3a1af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4aa99db74c3c6a347b31277ce40c4fd6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11405,7 +11521,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 1752013536}
-  reachableNodes: []
+  reachableNodes:
+  - {fileID: 740229360}
   interactables: []
   left: {fileID: 512769731}
   right: {fileID: 1257244590}
@@ -27055,7 +27172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorImage: {fileID: 1573063271}
-  defaultCursorSprite: {fileID: -1702258855, guid: d5dab0b4e3a79c24e8c7fb9bbaf1d0a4, type: 3}
+  defaultCursorSprite: {fileID: -159208799, guid: 99a4de553fa39794b94d641adeebb816, type: 3}
+  hoverCursorSprite: {fileID: -555168869, guid: 0f94e7904b6d27341b0030aaee354a8f, type: 3}
   cursorOffset: {x: 0, y: 0}
   heldItemSize: 90
   defaultCursorSize: 32
@@ -32094,9 +32212,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 577633260}
-  interactableLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!1 &2108445992
 GameObject:
   m_ObjectHideFlags: 0
@@ -32275,5 +32390,4 @@ SceneRoots:
   - {fileID: 316987239}
   - {fileID: 329946165}
   - {fileID: 832983348}
-  - {fileID: 959421097}
   - {fileID: 222414541}

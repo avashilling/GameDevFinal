@@ -41,7 +41,7 @@ public abstract class Node : MonoBehaviour
         if (GameManager.Instance.currentNode != null)
             GameManager.Instance.currentNode.Leave();
 
-        GameManager.Instance.currentNode = this;
+        GameManager.Instance.SetCurrentNode(this);
         isCameraMoving = true;
         StartCoroutine(MoveCameraToNode(Camera.main.transform, cameraPosition.position, cameraPosition.rotation, 1.0f));
 
