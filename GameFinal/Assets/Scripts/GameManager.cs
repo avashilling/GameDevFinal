@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        currentlyHeldItem = null;
+    }
+
     private void Update()
     {
         // Right-click to deselect currently held item

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class CursorManager : MonoBehaviour
@@ -8,9 +9,11 @@ public class CursorManager : MonoBehaviour
     [Header("Cursor Settings")]
     public Image cursorImage;
     public Sprite defaultCursorSprite;
+    public Sprite hoverCursorSprite;
     public Vector2 cursorOffset;
     public float heldItemSize = 8f;
     public float defaultCursorSize = 4f;
+    private bool isHovering = false;
 
     private Vector3 targetPos;
 
@@ -22,7 +25,6 @@ public class CursorManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -53,6 +55,28 @@ public class CursorManager : MonoBehaviour
         targetPos = Input.mousePosition + (Vector3)cursorOffset;
         cursorImage.transform.position = Vector3.Lerp(cursorImage.transform.position, targetPos, Time.deltaTime * 25f);
     }
+
+    public void UpdateHoverState(bool hovering)
+    {
+        if (GameManager.Instance.currentlyHeldItem != null)
+        {
+            Debug.Log("Item is being held! Skip cursor managing");
+            Debug.Log("Item type is: " + GameManager.Instance.currentlyHeldItem.itemType);
+            return;
+        }
+
+        if (hovering != isHovering)
+        {
+            isHovering = hovering;
+
+            if (hovering)
+                cursorImage.sprite = hoverCursorSprite;
+            else
+                SetCursorToDefault();
+        }
+    }
+
+
 
     public void SetCursorToDefault()
     {

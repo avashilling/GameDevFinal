@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DoorInteractable : MonoBehaviour, IInteractable
+public class DoorInteractable : Interactable, IInteractable
 {
     [Header("Scene To Load")]
     public string sceneName;

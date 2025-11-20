@@ -3,14 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public abstract class Interactable : MonoBehaviour
 {
-    protected Collider col;
+    public Collider col;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         col = GetComponent<Collider>();
-        col.enabled = false; // Only enabled when active node allows it
     }
-
-    // Called when player clicks on it
-    public abstract void Interact();
 }
