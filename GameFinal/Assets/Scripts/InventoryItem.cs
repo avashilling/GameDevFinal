@@ -5,6 +5,7 @@ public enum ItemType
     None,
     Coin,
     Key,
+    Hammer,
 }
 
 [System.Serializable]
