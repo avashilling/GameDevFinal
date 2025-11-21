@@ -26,7 +26,8 @@ public class DoorInteractable : Interactable, IInteractable
         }
         else
         {
-            Debug.Log("The door is locked. You need a key.");
+            HintManager.Instance.ShowHint("It's locked, I need to find a key.");
+
         }
     }
 }

@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
         keyItem.icon = keySprite;
 
         AddItem(keyItem);
+        HintManager.Instance.ShowHint("A key came out of the machine.");
 
-        Debug.Log("Arcade game complete! Key awarded.");
     }
 }

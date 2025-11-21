@@ -17,7 +17,7 @@ public class ClickRaycaster : MonoBehaviour
     // ---------------------------------------------------------
     private void RunHoverCheck()
     {
-        Debug.Log("Hover Check Running");
+        //Debug.Log("Hover Check Running");
 
         var node = GameManager.Instance.currentNode;
         if (node == null)
@@ -65,7 +65,7 @@ public class ClickRaycaster : MonoBehaviour
                 }
             }
         }
-        Debug.Log("HOVER STATE: " + hovering);
+        //Debug.Log("HOVER STATE: " + hovering);
 
         CursorManager.Instance.UpdateHoverState(hovering);
     }
