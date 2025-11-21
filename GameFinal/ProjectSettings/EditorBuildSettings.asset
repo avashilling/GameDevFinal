@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndScreen.unity
     guid: cf4d56cc1fb8bf4409f8bb7fc1e3396b
+  - enabled: 1
+    path: Assets/Scenes/Hallway Scene.unity
+    guid: aae75ce1551f3074cbd843854f131c08
+  - enabled: 1
+    path: Assets/Scenes/TheatreRoom.unity
+    guid: b062a35963ca78940b3c18c7dadc2767
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Header("Inventory Settings")]
-    public int maxSlots = 4;
+    public int maxSlots = 3;
     public List<InventoryItem> inventory = new List<InventoryItem>();
     public InventoryItem currentlyHeldItem;
 
@@ -49,6 +49,13 @@ public class GameManager : MonoBehaviour
             OnInventoryChanged?.Invoke();
         }
     }
+
+    public void SetStartingNode(Node node)
+    {
+        currentNode = null;   // wipe old scene state
+        node.Arrive();        // this correctly assigns currentNode, enables interactables, etc.
+    }
+
 
     // ------------------------------------------------------------
     // INVENTORY LOGIC
