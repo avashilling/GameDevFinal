@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,95 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: MagicEraser_251113_115009_0
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 1224
+        width: 1243
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a18cc466449c62249a03a8eaffda9052
+      internalID: -1049711820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicEraser_251113_115009_8
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1013
+        width: 1526
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ccbcac57c37b8b4d9fe71cbd34968d4
+      internalID: 456582067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicEraser_251113_115009_17
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 796
+        width: 967
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 080a3e5e03270bb4098fe3ff822a3ace
+      internalID: 221295304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagicEraser_251113_115009_24
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 584
+        width: 1244
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e1c55df32ee57e44af63aea1ec9f7f8
+      internalID: 49903185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -122,7 +210,39 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MagicEraser_251113_115009_0: -1049711820
+      MagicEraser_251113_115009_1: 1459961572
+      MagicEraser_251113_115009_10: 1356414287
+      MagicEraser_251113_115009_11: -1405275242
+      MagicEraser_251113_115009_12: -2085068788
+      MagicEraser_251113_115009_13: -1651392925
+      MagicEraser_251113_115009_14: -1593489305
+      MagicEraser_251113_115009_15: -423725065
+      MagicEraser_251113_115009_16: 241565074
+      MagicEraser_251113_115009_17: 221295304
+      MagicEraser_251113_115009_18: -1766519651
+      MagicEraser_251113_115009_19: 1846592880
+      MagicEraser_251113_115009_2: 857431363
+      MagicEraser_251113_115009_20: 520214877
+      MagicEraser_251113_115009_21: -1904810748
+      MagicEraser_251113_115009_22: 1416053265
+      MagicEraser_251113_115009_23: 1498798947
+      MagicEraser_251113_115009_24: 49903185
+      MagicEraser_251113_115009_25: -1725707092
+      MagicEraser_251113_115009_26: -895985223
+      MagicEraser_251113_115009_27: 641363450
+      MagicEraser_251113_115009_28: 1891482744
+      MagicEraser_251113_115009_29: 660201568
+      MagicEraser_251113_115009_3: 290158189
+      MagicEraser_251113_115009_30: -118804892
+      MagicEraser_251113_115009_31: 272062083
+      MagicEraser_251113_115009_4: 1364455577
+      MagicEraser_251113_115009_5: 514477049
+      MagicEraser_251113_115009_6: -708417915
+      MagicEraser_251113_115009_7: 1129882435
+      MagicEraser_251113_115009_8: 456582067
+      MagicEraser_251113_115009_9: -675176827
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
