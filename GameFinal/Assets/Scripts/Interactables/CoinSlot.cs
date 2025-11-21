@@ -11,7 +11,7 @@ public class CoinSlot : Interactable, IInteractable
         }
         else
         {
-            Debug.Log("You need a coin to use this slot.");
+            HintManager.Instance.ShowHint("Hm.. I need a token to start the game");
         }
     }
 }
