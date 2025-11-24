@@ -14,11 +14,12 @@ public class DestroyOnClick : Interactable, IInteractable
             {
                 GameManager.Instance.RemoveSelectedItem();
                 Destroy(gameObject);
-                Debug.Log($"Object destroyed using {requiredItem}.");
+                //Debug.Log($"Object destroyed using {requiredItem}.");
+                HintManager.Instance.ShowHint("Got it!");
             }
             else
             {
-                Debug.Log($"You need a {requiredItem} to use this.");
+                HintManager.Instance.ShowHint($"I think I need a {requiredItem} to use this.");
             }
         }
         else
