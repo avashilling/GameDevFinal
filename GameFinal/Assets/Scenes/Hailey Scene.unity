@@ -7242,6 +7242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   col: {fileID: 0}
   sceneName: Hallway Scene
+  unlocked: 0
 --- !u!65 &946446780
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9211,8 +9212,8 @@ Transform:
   m_GameObject: {fileID: 1238385094}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.6, y: -51.7, z: -0.068}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.1, y: -22, z: -0.068}
+  m_LocalScale: {x: 1.2051, y: 1.2051, z: 1.2051}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1544713141}
@@ -9251,8 +9252,8 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0.28284076, g: 0.85660374, b: 0.46432784, a: 1}
-  m_Intensity: 3608.5
-  m_Range: 92
+  m_Intensity: 5846.4
+  m_Range: 97
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -9314,12 +9315,12 @@ Animation:
   m_GameObject: {fileID: 1238385094}
   m_Enabled: 1
   serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 2d4050fbee7b9744893acfd24a188d61, type: 2}
+  m_Animation: {fileID: 7400000, guid: 23eae4fdae6bf7a45b66118fcd0292df, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: 2d4050fbee7b9744893acfd24a188d61, type: 2}
+  - {fileID: 7400000, guid: 23eae4fdae6bf7a45b66118fcd0292df, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_UpdateMode: 0
   m_CullingType: 0
 --- !u!1 &1257244589
