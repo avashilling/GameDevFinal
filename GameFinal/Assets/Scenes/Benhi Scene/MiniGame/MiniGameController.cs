@@ -1,116 +1,55 @@
-﻿//using UnityEngine;
-
-//public class MiniGameController : MonoBehaviour
-//{
-//    [Header("MiniGame Objects")]
-//    public GameObject playerCube;
-//    public Transform startPoint;
-//    public GameObject wallsParent;
-//    public GameObject goalObject;
-
-//    [Header("Panel Bounds")]
-//    public RectTransform miniGamePanel; // assign the Screen Panel here
-
-//    // Calculated world bounds
-//    [HideInInspector] public Vector2 MinBounds;
-//    [HideInInspector] public Vector2 MaxBounds;
-
-//    private void Awake()
-//    {
-//        // Initially deactivate mini-game objects
-//        if (playerCube != null) playerCube.SetActive(false);
-//        if (wallsParent != null) wallsParent.SetActive(false);
-//        if (goalObject != null) goalObject.SetActive(false);
-//    }
-
-//    private void Start()
-//    {
-//        UpdatePanelBounds();
-//    }
-
-//    public void UpdatePanelBounds()
-//    {
-//        if (miniGamePanel != null)
-//        {
-//            Vector3[] corners = new Vector3[4];
-//            miniGamePanel.GetWorldCorners(corners);
-
-//            MinBounds = corners[0]; // bottom-left
-//            MaxBounds = corners[2]; // top-right
-//        }
-//    }
-
-//    public void BeginGame()
-//    {
-//        UpdatePanelBounds();
-
-//        if (playerCube != null) playerCube.SetActive(true);
-//        if (wallsParent != null) wallsParent.SetActive(true);
-//        if (goalObject != null) goalObject.SetActive(true);
-
-//        if (playerCube != null && startPoint != null)
-//            playerCube.transform.position = startPoint.position;
-//    }
-
-//    public void ForceEndGame()
-//    {
-//        if (playerCube != null) playerCube.SetActive(false);
-//        if (wallsParent != null) wallsParent.SetActive(false);
-//        if (goalObject != null) goalObject.SetActive(false);
-
-//        if (playerCube != null && startPoint != null)
-//            playerCube.transform.position = startPoint.position;
-//    }
-
-//    public void Fail()
-//    {
-//        Debug.Log("Player hit a wall! Resetting position.");
-//        if (playerCube != null && startPoint != null)
-//            playerCube.transform.position = startPoint.position;
-//    }
-//}
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MiniGameController : MonoBehaviour
 {
     [Header("MiniGame Objects")]
-    public RectTransform playerRect;       // Player UI element
-    public RectTransform startPointRect;   // Start position
-    public RectTransform[] wallImages;     // Wall UI Images
-    public RectTransform goalRect;         // Goal UI Image
+    public RectTransform playerRect;
+    public RectTransform startPointRect;
+    public RectTransform[] wallImages;
+    public RectTransform goalRect;
 
     [Header("Panel Bounds")]
-    public RectTransform miniGamePanel;    // Screen panel containing mini-game
+    public RectTransform miniGamePanel;
 
-    // Calculated world bounds
+    [Header("UI Buttons")]
+    public GameObject exitButton;   // <-- NEW EXIT BUTTON
+
     [HideInInspector] public Vector2 MinBounds;
     [HideInInspector] public Vector2 MaxBounds;
 
     private void Awake()
     {
-        // Hide all mini-game objects initially
+        // Hide all game elements at the start
         if (playerRect != null) playerRect.gameObject.SetActive(false);
         if (goalRect != null) goalRect.gameObject.SetActive(false);
+
         if (wallImages != null)
         {
             foreach (var wall in wallImages)
                 wall.gameObject.SetActive(false);
         }
+
+        // Hide exit button at the start
+        if (exitButton != null) exitButton.SetActive(false);
     }
 
     private void Start()
     {
         UpdatePanelBounds();
     }
-
+    // Update the bounds of the mini-game panel in anchored space
     public void UpdatePanelBounds()
     {
         if (miniGamePanel != null)
         {
             Vector3[] corners = new Vector3[4];
             miniGamePanel.GetWorldCorners(corners);
-            MinBounds = corners[0]; // bottom-left
-            MaxBounds = corners[2]; // top-right
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                miniGamePanel, corners[0], null, out MinBounds);
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                miniGamePanel, corners[2], null, out MaxBounds);
         }
     }
 
@@ -118,49 +57,49 @@ public class MiniGameController : MonoBehaviour
     {
         UpdatePanelBounds();
 
-        // Show mini-game objects
         if (playerRect != null) playerRect.gameObject.SetActive(true);
         if (goalRect != null) goalRect.gameObject.SetActive(true);
-        if (wallImages != null)
-        {
-            foreach (var wall in wallImages)
-                wall.gameObject.SetActive(true);
-        }
+        foreach (var wall in wallImages) wall.gameObject.SetActive(true);
 
-        // Reset player position
+        // Reset player to start
         if (playerRect != null && startPointRect != null)
-            playerRect.position = startPointRect.position;
-    }
+            playerRect.anchoredPosition = startPointRect.anchoredPosition;
 
+        // Hide exit button when starting the game
+        if (exitButton != null) exitButton.SetActive(false);
+    }
+    // Immediately end the mini-game, hiding all elements
     public void ForceEndGame()
     {
         if (playerRect != null) playerRect.gameObject.SetActive(false);
         if (goalRect != null) goalRect.gameObject.SetActive(false);
-        if (wallImages != null)
-        {
-            foreach (var wall in wallImages)
-                wall.gameObject.SetActive(false);
-        }
+
+        foreach (var wall in wallImages)
+            wall.gameObject.SetActive(false);
 
         if (playerRect != null && startPointRect != null)
-            playerRect.position = startPointRect.position;
+            playerRect.anchoredPosition = startPointRect.anchoredPosition;
     }
 
     public void Fail()
     {
         Debug.Log("Player hit a wall! Resetting position.");
+
         if (playerRect != null && startPointRect != null)
-            playerRect.position = startPointRect.position;
+            playerRect.anchoredPosition = startPointRect.anchoredPosition;
     }
 
     public void Success()
     {
         Debug.Log("Player reached the goal! Game complete.");
+
         ForceEndGame();
-        // Optional: add reward, message, or unlock next step
+
+        // SHOW EXIT BUTTON ONLY AFTER SUCCESS
+        if (exitButton != null)
+            exitButton.SetActive(true);
     }
 
-    // Check if player overlaps any wall
     public bool CheckWallCollision()
     {
         if (playerRect == null || wallImages == null) return false;
@@ -170,24 +109,32 @@ public class MiniGameController : MonoBehaviour
             if (RectOverlaps(playerRect, wall))
                 return true;
         }
+
         return false;
     }
-
-    // RectTransform overlap detection
+    // Check if two RectTransforms overlap in the mini-game panel's local space
     public bool RectOverlaps(RectTransform a, RectTransform b)
     {
-        Vector3[] aCorners = new Vector3[4];
-        Vector3[] bCorners = new Vector3[4];
-        a.GetWorldCorners(aCorners);
-        b.GetWorldCorners(bCorners);
-
-        Rect rectA = new Rect(aCorners[0].x, aCorners[0].y,
-                              aCorners[2].x - aCorners[0].x,
-                              aCorners[2].y - aCorners[0].y);
-        Rect rectB = new Rect(bCorners[0].x, bCorners[0].y,
-                              bCorners[2].x - bCorners[0].x,
-                              bCorners[2].y - bCorners[0].y);
+        Rect rectA = GetLocalRect(a);
+        Rect rectB = GetLocalRect(b);
 
         return rectA.Overlaps(rectB);
+    }
+
+    private Rect GetLocalRect(RectTransform rectTransform)
+    {
+        Vector3[] corners = new Vector3[4];
+        rectTransform.GetWorldCorners(corners);
+
+        Vector2 localBL;
+        Vector2 localTR;
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            miniGamePanel, corners[0], null, out localBL);
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            miniGamePanel, corners[2], null, out localTR);
+
+        return new Rect(localBL, localTR - localBL);
     }
 }
