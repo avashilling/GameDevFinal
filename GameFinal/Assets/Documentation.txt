@@ -1,0 +1,46 @@
+Camera setup:
+---------------
+Node is the main camera script, it has all the functions in it to leave, arrive, and animate between nodes. 
+Each node has an array of reachableNodes and interactables. Important notes:
+   > if an item/Node ISNT in the array of reachable items, you won't be able to navigate to it. This is so that players can't jump around between walls and stuff
+   > If you want to be able to click to a node (navigate from afar, without using left/right, or to zoom in on a location), you need to give it a collider
+
+   Other stuff:
+   > If you remove a node from reachableNodes, you have to click the minus sign to get rid of the slot. Otherwise it fucks up
+   > Shortcuts: navigate where you want the camera to be positioned, then right click the element in the hierarchy and click "align with view", this moves the camera to your spot
+   > If you want to change the initial scene, you'll need to assign a new start scene in the "SceneInitializer" in managers. Also orient the camera to that position so that it doesn't animate there at the start
+
+
+GameManager:
+-------------
+GameManager holds the current state of the inventory, currentNode, and some audio stuff
+> It's a public singleton Instance, so there's a new one in each scene, but any script can access it like this: GameManager.Instance.currentlyHeldItem.itemType, or GameManager.Instance.currentNode
+> If you write any interactable scripts that mess with currently held items, you'll use the functions: RemoveSelectedItem(), SelectItem(int index), etc
+
+
+Interactables:
+--------------
+All interactable items need to have a script on them that extends both Interactable and IInteractable, like this: public class PickupItem : Interactable, IInteractable
+Interactable makes sure that the item has a collider (must have a collider to be able to pickup), and IInteractable makes sure it has an "Interact" function. Idk why they're separate.
+> For the VHS tape, you can use that script CoinSlot as a template. It'll work the exact same, just have a different required item and action after
+> If the script doesn't extend Interactable, it can't be placed in the Node.interactable list 
+> There are already scripts for pickinng up items and removing items on click (like how the vent disappears on click, but you don't pick it up). 
+	PickupItem.cs and DestroyOnClick.cs
+	> There also a script for locked/unlocked door that takes a key, you can edit this to need other things or make a new one for however your door opens
+
+
+Hints:
+------
+HintManager is also a singleton instance, anytime you want to show a hint (like when you click on an object with the wrong item, or with nothing), use this: HintManager.Instance.ShowHint("hint text here");
+
+
+Inventory:
+----------
+Inventory is mostly set up, but if you add any new items you'll need to add them to the "InventoryItem" enum, which currently looks like this: 
+public enum ItemType{   None,
+                        Coin,
+                        Key,
+                        Hammer,}
+It makes it easier to make interactables require certain items. 
+> Each item also needs a sprite (put in a png, change to single sprite in options) for it to show up in the inventory UI, and an assigned type. 
+You'll do this in the inspector if you assign the "pickupItem" script. If you make another script that puts items in your inventory, you'll need to make sure you have similar code there so that the inventory slots have data to use

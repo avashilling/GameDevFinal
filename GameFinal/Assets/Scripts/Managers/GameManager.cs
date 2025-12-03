@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     public Node currentNode;
 
     [Header("Audio")]
-    public AudioSource pickupAudio;        // <-- assign your item pickup sound
-    public AudioSource movementAudio;      // <-- assign node movement sound (different clip)
+    public AudioSource pickupAudio; 
+    public AudioSource movementAudio; 
 
     public delegate void InventoryChangeHandler();
     public event InventoryChangeHandler OnInventoryChanged;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
