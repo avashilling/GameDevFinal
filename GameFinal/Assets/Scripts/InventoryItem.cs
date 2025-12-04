@@ -6,6 +6,7 @@ public enum ItemType
     Coin,
     Key,
     Hammer,
+    Disc   //<-- Added Disc item type benny
 }
 
 [System.Serializable]
