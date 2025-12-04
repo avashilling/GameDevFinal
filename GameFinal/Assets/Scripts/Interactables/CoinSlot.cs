@@ -2,12 +2,26 @@ using UnityEngine;
 
 public class CoinSlot : Interactable, IInteractable
 {
+    [Header("UI / Objects")]
+    public GameObject insertCoinText;   // UI canvas element to remove
+    public GameObject startButton;      // Object that becomes active
+
     public void Interact(InventoryItem heldItem)
     {
         if (heldItem != null && heldItem.itemType == ItemType.Coin)
         {
+            // Remove coin
             GameManager.Instance.RemoveSelectedItem();
-            GameManager.Instance.startArcadeGame();
+
+            // Play sound
+            PlayUseAudio();
+
+            // Update UI and objects
+            if (insertCoinText != null)
+                Destroy(insertCoinText);
+
+            if (startButton != null)
+                startButton.SetActive(true);
         }
         else
         {

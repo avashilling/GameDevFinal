@@ -12,14 +12,19 @@ public class MiniGameController : MonoBehaviour
     public RectTransform miniGamePanel;
 
     [Header("UI Buttons")]
-    public GameObject exitButton;   // <-- NEW EXIT BUTTON
+    public GameObject exitButton;
+
+    [Header("Audio")]
+    public AudioSource arcadeMusic;  // looping music while minigame is running
+    public AudioSource winSound;     // plays on success
+    public AudioSource deathSound;   // plays on wall collision
 
     [HideInInspector] public Vector2 MinBounds;
     [HideInInspector] public Vector2 MaxBounds;
 
     private void Awake()
     {
-        // Hide all game elements at the start
+        // Hide all game elements
         if (playerRect != null) playerRect.gameObject.SetActive(false);
         if (goalRect != null) goalRect.gameObject.SetActive(false);
 
@@ -29,15 +34,19 @@ public class MiniGameController : MonoBehaviour
                 wall.gameObject.SetActive(false);
         }
 
-        // Hide exit button at the start
-        if (exitButton != null) exitButton.SetActive(false);
+        if (exitButton != null)
+            exitButton.SetActive(false);
+
+        // Ensure arcade music isn't playing at start
+        if (arcadeMusic != null)
+            arcadeMusic.Stop();
     }
 
     private void Start()
     {
         UpdatePanelBounds();
     }
-    // Update the bounds of the mini-game panel in anchored space
+
     public void UpdatePanelBounds()
     {
         if (miniGamePanel != null)
@@ -53,6 +62,9 @@ public class MiniGameController : MonoBehaviour
         }
     }
 
+    // -------------------------------------------------------
+    // GAME START
+    // -------------------------------------------------------
     public void BeginGame()
     {
         UpdatePanelBounds();
@@ -61,14 +73,23 @@ public class MiniGameController : MonoBehaviour
         if (goalRect != null) goalRect.gameObject.SetActive(true);
         foreach (var wall in wallImages) wall.gameObject.SetActive(true);
 
-        // Reset player to start
         if (playerRect != null && startPointRect != null)
             playerRect.anchoredPosition = startPointRect.anchoredPosition;
 
-        // Hide exit button when starting the game
-        if (exitButton != null) exitButton.SetActive(false);
+        if (exitButton != null)
+            exitButton.SetActive(false);
+
+        // Start arcade music
+        if (arcadeMusic != null)
+        {
+            arcadeMusic.loop = true;
+            arcadeMusic.Play();
+        }
     }
-    // Immediately end the mini-game, hiding all elements
+
+    // -------------------------------------------------------
+    // GAME END
+    // -------------------------------------------------------
     public void ForceEndGame()
     {
         if (playerRect != null) playerRect.gameObject.SetActive(false);
@@ -79,27 +100,50 @@ public class MiniGameController : MonoBehaviour
 
         if (playerRect != null && startPointRect != null)
             playerRect.anchoredPosition = startPointRect.anchoredPosition;
+
+        // Stop arcade music when forcibly ended
+        if (arcadeMusic != null)
+            arcadeMusic.Stop();
     }
 
+    // -------------------------------------------------------
+    // FAIL: Hit wall
+    // -------------------------------------------------------
     public void Fail()
     {
         Debug.Log("Player hit a wall! Resetting position.");
 
+        // Play death sound
+        if (deathSound != null)
+            deathSound.Play();
+
+        // Reset back to the start
         if (playerRect != null && startPointRect != null)
             playerRect.anchoredPosition = startPointRect.anchoredPosition;
     }
 
+    // -------------------------------------------------------
+    // SUCCESS
+    // -------------------------------------------------------
     public void Success()
     {
         Debug.Log("Player reached the goal! Game complete.");
 
-        ForceEndGame();
+        // Stop arcade music
+        if (arcadeMusic != null)
+            arcadeMusic.Stop();
 
-        // SHOW EXIT BUTTON ONLY AFTER SUCCESS
-        if (exitButton != null)
-            exitButton.SetActive(true);
+        // Play win sound
+        if (winSound != null)
+            winSound.Play();
+
+        ForceEndGame();
+        GameManager.Instance.winArcadeGame();
     }
 
+    // -------------------------------------------------------
+    // WALL COLLISION CHECK
+    // -------------------------------------------------------
     public bool CheckWallCollision()
     {
         if (playerRect == null || wallImages == null) return false;
@@ -109,15 +153,13 @@ public class MiniGameController : MonoBehaviour
             if (RectOverlaps(playerRect, wall))
                 return true;
         }
-
         return false;
     }
-    // Check if two RectTransforms overlap in the mini-game panel's local space
+
     public bool RectOverlaps(RectTransform a, RectTransform b)
     {
         Rect rectA = GetLocalRect(a);
         Rect rectB = GetLocalRect(b);
-
         return rectA.Overlaps(rectB);
     }
 

@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class ClickRaycaster : MonoBehaviour
 {
@@ -17,7 +19,12 @@ public class ClickRaycaster : MonoBehaviour
     // ---------------------------------------------------------
     private void RunHoverCheck()
     {
-        Debug.Log("Hover Check Running");
+        // Skip hover if over UI
+        if (IsPointerOverUI())
+        {
+            CursorManager.Instance.UpdateHoverState(false);
+            return;
+        }
 
         var node = GameManager.Instance.currentNode;
         if (node == null)
@@ -65,7 +72,6 @@ public class ClickRaycaster : MonoBehaviour
                 }
             }
         }
-        Debug.Log("HOVER STATE: " + hovering);
 
         CursorManager.Instance.UpdateHoverState(hovering);
     }
@@ -75,6 +81,10 @@ public class ClickRaycaster : MonoBehaviour
     // ---------------------------------------------------------
     private void RunClickCheck()
     {
+        // Skip clicks if over UI
+        if (IsPointerOverUI())
+            return;
+
         var node = GameManager.Instance.currentNode;
         if (node == null) return;
 
@@ -139,5 +149,23 @@ public class ClickRaycaster : MonoBehaviour
         {
             clickedNode.Arrive();
         }
+    }
+
+    // ---------------------------------------------------------
+    // HELPER: Check if pointer is over any UI element
+    // ---------------------------------------------------------
+    private bool IsPointerOverUI()
+    {
+        if (EventSystem.current == null)
+            return false;
+
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+        return results.Count > 0;
     }
 }

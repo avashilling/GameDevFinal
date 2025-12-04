@@ -9,6 +9,9 @@ public class DoorInteractable : Interactable, IInteractable
     [Header("Door Settings")]
     public bool unlocked = false;   // false = key required, true = open freely
 
+    [Header("Audio Settings")]
+    public float useAudioDelay = 0.25f; // Delay in seconds before scene loads
+
     public void Interact(InventoryItem heldItem)
     {
         // If the door is unlocked, allow entry regardless of held item.
@@ -22,7 +25,9 @@ public class DoorInteractable : Interactable, IInteractable
         if (heldItem != null && heldItem.itemType == ItemType.Key)
         {
             GameManager.Instance.RemoveSelectedItem();
-            LoadScene();
+            PlayUseAudio();
+            // Delay scene load so audio can play
+            Invoke(nameof(LoadScene), useAudioDelay);
         }
         else
         {

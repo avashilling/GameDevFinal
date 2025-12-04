@@ -16,10 +16,6 @@ public class GameManager : MonoBehaviour
     [Header("Node State")]
     public Node currentNode;
 
-    [Header("Audio")]
-    public AudioSource pickupAudio; 
-    public AudioSource movementAudio; 
-
     public delegate void InventoryChangeHandler();
     public event InventoryChangeHandler OnInventoryChanged;
 
@@ -71,10 +67,6 @@ public class GameManager : MonoBehaviour
 
         inventory.Add(newItem);
 
-        // Play pickup sound
-        if (pickupAudio != null)
-            pickupAudio.Play();
-
         OnInventoryChanged?.Invoke();
         return true;
     }
@@ -114,7 +106,6 @@ public class GameManager : MonoBehaviour
     // NODE MOVEMENT LOGIC
     // ------------------------------------------------------------
 
-    // Call this from Node.Arrive() when the player moves
     public void SetCurrentNode(Node newNode)
     {
         if (newNode == null) return;
@@ -122,12 +113,10 @@ public class GameManager : MonoBehaviour
 
         currentNode = newNode;
 
-        // Play node movement sound
-        if (movementAudio != null)
-            movementAudio.Play();
+        AudioManager.Instance.PlayFootstep();
     }
 
-    public void startArcadeGame()
+    public void winArcadeGame()
     {
         InventoryItem keyItem = new InventoryItem();
         keyItem.itemType = ItemType.Key;

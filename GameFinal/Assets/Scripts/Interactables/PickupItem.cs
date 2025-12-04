@@ -8,11 +8,12 @@ public class PickupItem : Interactable, IInteractable
     {
         if (GameManager.Instance.AddItem(itemData))
         {
+            PlayPickupAudio();
             Destroy(gameObject);
         }
         else
         {
-            Debug.Log("Inventory full, cannot pick up item of type: " + itemData.itemType);
+            Debug.Log("Inventory full, cannot pick up item: " + itemData.itemType);
         }
     }
 }

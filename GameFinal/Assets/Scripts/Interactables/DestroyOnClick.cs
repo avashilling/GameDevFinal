@@ -16,6 +16,7 @@ public class DestroyOnClick : Interactable, IInteractable
                 Destroy(gameObject);
                 //Debug.Log($"Object destroyed using {requiredItem}.");
                 HintManager.Instance.ShowHint("Got it!");
+                PlayUseAudio();
             }
             else
             {
@@ -27,6 +28,7 @@ public class DestroyOnClick : Interactable, IInteractable
             // No item required: destroy immediately
             Destroy(gameObject);
             HintManager.Instance.ShowHint("Got it!");
+            PlayUseAudio();
         }
     }
 }
