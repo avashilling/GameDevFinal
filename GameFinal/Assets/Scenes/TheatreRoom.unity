@@ -16972,6 +16972,7 @@ MonoBehaviour:
   reachableNodes: []
   interactables:
   - {fileID: 1741883853}
+  - {fileID: 1593542651}
   left: {fileID: 0}
   right: {fileID: 0}
   back: {fileID: 1630567847}
@@ -19849,7 +19850,7 @@ Transform:
   m_GameObject: {fileID: 1741883852}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 231.94, y: 45.8241, z: 46.52}
+  m_LocalPosition: {x: 232.24, y: 45.8241, z: 46.41}
   m_LocalScale: {x: 2.3683522, y: 1.066953, z: 1.3889}
   m_ConstrainProportionsScale: 0
   m_Children: []
