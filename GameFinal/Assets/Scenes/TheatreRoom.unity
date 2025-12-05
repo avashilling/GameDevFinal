@@ -7653,6 +7653,7 @@ GameObject:
   - component: {fileID: 629273857}
   - component: {fileID: 629273856}
   - component: {fileID: 629273855}
+  - component: {fileID: 629273860}
   m_Layer: 0
   m_Name: Screen2(1)
   m_TagString: Untagged
@@ -7780,7 +7781,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629273853}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: e44cfded3cafb4746842a848bfa478c8, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: a3a1f2006b4ceeb47ac6539aae3baae5, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -7884,6 +7885,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629273853}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &629273860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629273853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d8b02b76e30ef4ebe04ed6dcfb7ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &640183315
 GameObject:
   m_ObjectHideFlags: 0
@@ -11054,6 +11067,7 @@ GameObject:
   - component: {fileID: 874528183}
   - component: {fileID: 874528182}
   - component: {fileID: 874528181}
+  - component: {fileID: 874528186}
   m_Layer: 0
   m_Name: Screen
   m_TagString: Untagged
@@ -11206,7 +11220,7 @@ VideoPlayer:
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 1
-  m_WaitForFirstFrame: 1
+  m_WaitForFirstFrame: 0
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
 --- !u!136 &874528183
@@ -11285,6 +11299,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874528179}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &874528186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874528179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d8b02b76e30ef4ebe04ed6dcfb7ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &875695838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13698,7 +13724,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 520c4f1628e441e4d94f3320f5d2feb4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.519
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -13991,12 +14017,14 @@ MonoBehaviour:
   musicSource: {fileID: 1078158448}
   sfxSource: {fileID: 1078158450}
   footstepSource: {fileID: 1078158449}
+  arcadeMusicSource: {fileID: 0}
   backgroundMusic: {fileID: 8300000, guid: 520c4f1628e441e4d94f3320f5d2feb4, type: 3}
   footstepClips:
   - {fileID: 8300000, guid: 5f3340ad05f10da4c9e020cc1048c745, type: 3}
   - {fileID: 8300000, guid: 1bfdabc9344d81948b78c1fc3d26d7bd, type: 3}
   - {fileID: 8300000, guid: 435ae8c76aaa2834e870598ca4ef4a69, type: 3}
   - {fileID: 8300000, guid: 2b0c3de1c5e793a4da9692a9dbc664fd, type: 3}
+  musicVolume: 0.05
 --- !u!1 &1080776494
 GameObject:
   m_ObjectHideFlags: 0
@@ -16871,6 +16899,7 @@ MonoBehaviour:
   col: {fileID: 0}
   videoPlayer: {fileID: 1625929133}
   requiredItem: 5
+  endSound: {fileID: 8300000, guid: a0df4afd6c68f4a4980a43e2d5d1d471, type: 3}
 --- !u!1 &1315830944
 GameObject:
   m_ObjectHideFlags: 0
@@ -16885,6 +16914,7 @@ GameObject:
   - component: {fileID: 1315830948}
   - component: {fileID: 1315830947}
   - component: {fileID: 1315830946}
+  - component: {fileID: 1315830951}
   m_Layer: 0
   m_Name: Screen2
   m_TagString: Untagged
@@ -17012,7 +17042,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315830944}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: e44cfded3cafb4746842a848bfa478c8, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: a3a1f2006b4ceeb47ac6539aae3baae5, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -17116,6 +17146,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315830944}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1315830951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315830944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d8b02b76e30ef4ebe04ed6dcfb7ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1322675284
 GameObject:
   m_ObjectHideFlags: 0
@@ -20604,7 +20646,7 @@ VideoPlayer:
   m_AspectRatio: 2
   m_DataSource: 0
   m_TimeUpdateMode: 2
-  m_PlaybackSpeed: 1.2
+  m_PlaybackSpeed: 10
   m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
@@ -20616,7 +20658,7 @@ VideoPlayer:
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 0
   m_SkipOnDrop: 1
-  m_Looping: 1
+  m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
