@@ -1,74 +1,72 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class VendingMachineInteractable : Interactable, IInteractable
 {
-    [Header("Disc & Animation")]
-    [Tooltip("Animator controlling the disc object")]
-    public Animator discAnimator;
-
-    [Tooltip("Names of kick animations in order")]
-    public string[] kickAnimations;
-
-    [Tooltip("Disc GameObject to drop after final kick")]
-    public GameObject discObject;
-
-    [Tooltip("Position where the disc will be dropped")]
+    [Header("Disc Objects")]
+    public GameObject discInsideMachine;   // <- The disc visible inside the vending machine
+    public GameObject droppedDisc;         // <- The disc that gets spawned on the floor
     public Transform dropPosition;
 
+    [Header("Animation")]
+    public Animation vendingAnimation;     // Using Animation component instead of Animator
+    public string kickAnimationName = "VendingShake";
+
     [Header("Audio")]
-    [Tooltip("Assign 3 different kick sounds to play sequentially")]
-    public AudioClip[] kickSounds; // <-- array for 3 different sounds
+    public AudioClip[] kickSounds;
 
     [Header("Camera Shake")]
-    [Tooltip("Duration of camera shake on kick")]
     public float shakeDuration = 0.2f;
-
-    [Tooltip("Magnitude of camera shake")]
     public float shakeMagnitude = 0.1f;
 
-    private int currentKick = 0;
+    private int kickCount = 0;
 
     public void Interact(InventoryItem heldItem)
     {
-        if (discAnimator == null || kickAnimations.Length == 0 || discObject == null || dropPosition == null)
+        // Play kick animation
+        if (vendingAnimation != null && vendingAnimation[kickAnimationName] != null)
         {
-            Debug.LogError("VendingMachineInteractable: Assign all references.");
-            return;
+            vendingAnimation.Play(kickAnimationName);
         }
 
-        if (currentKick < kickAnimations.Length)
+        // Play random kick sound
+        if (kickSounds != null && kickSounds.Length > 0)
         {
-            // Play next kick animation
-            discAnimator.Play(kickAnimations[currentKick]);
-
-            // Play kick sound (loop if not enough clips)
-            if (kickSounds != null && kickSounds.Length > 0)
-            {
-                int soundIndex = currentKick % kickSounds.Length;
-                AudioManager.Instance.PlaySFX(kickSounds[soundIndex]);
-            }
-
-            // Shake camera
-            if (Camera.main != null)
-                StartCoroutine(ShakeCamera(Camera.main.transform, shakeDuration, shakeMagnitude));
-
-            currentKick++;
+            int index = Random.Range(0, kickSounds.Length);
+            AudioManager.Instance.PlaySFX(kickSounds[index]);
         }
 
-        if (currentKick >= kickAnimations.Length)
-        {
-            // Drop disc
-            discObject.transform.position = dropPosition.position;
-            discObject.SetActive(true); // make it visible / interactable
+        // Camera shake
+        if (Camera.main != null)
+            StartCoroutine(ShakeCamera(Camera.main.transform, shakeDuration, shakeMagnitude));
 
-            currentKick = 0; // reset counter for next time
+        kickCount++;
+
+        // On 3rd kick → drop disc
+        if (kickCount >= 3)
+        {
+            DropDisc();
+            kickCount = 0;
         }
     }
 
-    private IEnumerator ShakeCamera(Transform camTransform, float duration, float magnitude)
+    private void DropDisc()
     {
-        Vector3 originalPos = camTransform.localPosition;
+        if (droppedDisc != null && dropPosition != null)
+        {
+            // Move dropped disc into position
+            droppedDisc.transform.position = dropPosition.position;
+            droppedDisc.SetActive(true);
+        }
+
+        // Hide the disc inside the vending machine
+        if (discInsideMachine != null)
+            discInsideMachine.SetActive(false);
+    }
+
+    private IEnumerator ShakeCamera(Transform cam, float duration, float magnitude)
+    {
+        Vector3 originalPos = cam.localPosition;
         float elapsed = 0f;
 
         while (elapsed < duration)
@@ -76,12 +74,12 @@ public class VendingMachineInteractable : Interactable, IInteractable
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
 
-            camTransform.localPosition = originalPos + new Vector3(x, y, 0f);
+            cam.localPosition = originalPos + new Vector3(x, y, 0);
             elapsed += Time.deltaTime;
 
             yield return null;
         }
 
-        camTransform.localPosition = originalPos;
+        cam.localPosition = originalPos;
     }
 }
