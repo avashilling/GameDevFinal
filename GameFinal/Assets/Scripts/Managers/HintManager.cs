@@ -27,7 +27,6 @@ public class HintManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Time left: " + timer);
         if (timer > 0f)
         {
             timer -= Time.deltaTime;
