@@ -2442,7 +2442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &327109062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7167,7 +7167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01d0f7fd3fc8b44591e1f18cf30dc1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSource: {fileID: 0}
+  musicSource: {fileID: 598206951}
   sfxSource: {fileID: 598206953}
   footstepSource: {fileID: 598206952}
   arcadeMusicSource: {fileID: 0}
@@ -7177,6 +7177,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1bfdabc9344d81948b78c1fc3d26d7bd, type: 3}
   - {fileID: 8300000, guid: 435ae8c76aaa2834e870598ca4ef4a69, type: 3}
   - {fileID: 8300000, guid: 2b0c3de1c5e793a4da9692a9dbc664fd, type: 3}
+  musicVolume: 0.0622
 --- !u!1 &605875183
 GameObject:
   m_ObjectHideFlags: 0
