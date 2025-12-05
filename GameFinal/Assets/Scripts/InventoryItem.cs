@@ -3,10 +3,12 @@ using UnityEngine;
 public enum ItemType
 {
     None,
+    Battery,
     Coin,
     Key,
     Hammer,
     Disc   //<-- Added Disc item type benny
+   
 }
 
 [System.Serializable]
