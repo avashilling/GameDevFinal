@@ -16,7 +16,10 @@ public class KeypadController : MonoBehaviour
     public AudioClip failSound;
 
     [Header("Keypad Screen")]
-    public GameObject screenObject;     // The screen that turns on when powered
+    public GameObject screenObject;
+
+    [Header("Door To Unlock")]
+    public DoorInteractable targetDoor;    // Reference to the door this keypad unlocks
 
     private string currentInput = "";
 
@@ -28,18 +31,15 @@ public class KeypadController : MonoBehaviour
 
     private void Start()
     {
-        // Turn screen OFF at start if unpowered
         if (screenObject != null)
             screenObject.SetActive(IsPowered());
 
-        // Blank display until powered
         if (!IsPowered() && displayText != null)
             displayText.text = "";
     }
 
     private void EnableScreenIfPowered()
     {
-        // If powered, ensure the screen becomes visible
         if (IsPowered() && screenObject != null && !screenObject.activeSelf)
             screenObject.SetActive(true);
     }
@@ -50,7 +50,7 @@ public class KeypadController : MonoBehaviour
         {
             if (displayText != null)
                 displayText.text = "";
-            HintManager.Instance.ShowHint("It doesn't seem to be powered on");
+            HintManager.Instance.ShowHint("It does not seem to be powered on");
             return;
         }
 
@@ -100,13 +100,13 @@ public class KeypadController : MonoBehaviour
 
         if (currentInput == correctCode)
         {
-            Debug.Log("Correct code! Unlocking.");
+            Debug.Log("Correct code. Unlocking.");
 
             if (successSound != null)
                 AudioManager.Instance.PlaySFX(successSound);
 
             GameManager.Instance.keypadCorrect = true;
-            HintManager.Instance.ShowHint("It worked! I think the door just unlocked");
+            HintManager.Instance.ShowHint("It worked. I think the door just unlocked");
 
             OnCodeSuccess();
         }
@@ -116,7 +116,8 @@ public class KeypadController : MonoBehaviour
 
             if (failSound != null)
                 AudioManager.Instance.PlaySFX(failSound);
-            HintManager.Instance.ShowHint("Hm..I better figure out what the code is");
+
+            HintManager.Instance.ShowHint("Hm.. I better figure out the right code");
             currentInput = "";
             UpdateDisplay();
 
@@ -132,7 +133,9 @@ public class KeypadController : MonoBehaviour
 
     private void OnCodeSuccess()
     {
-        Debug.Log("TODO: Success logic here.");
+        // Unlock the door
+        if (targetDoor != null)
+            targetDoor.unlocked = true;
     }
 
     private void OnCodeFail()

@@ -29,9 +29,13 @@ public class DoorInteractable : Interactable, IInteractable
             // Delay scene load so audio can play
             Invoke(nameof(LoadScene), useAudioDelay);
         }
-        else
+        else if(SceneManager.GetActiveScene().name == "Hailey Scene")
         {
             HintManager.Instance.ShowHint("It's locked. I need to find a key.");
+        }
+        else if(SceneManager.GetActiveScene().name == "Hallway Scene")
+        {
+            HintManager.Instance.ShowHint("It's locked. No keyhole...");
         }
     }
 
