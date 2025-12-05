@@ -520,7 +520,6 @@ GameObject:
   m_Component:
   - component: {fileID: 89083785}
   - component: {fileID: 89083783}
-  - component: {fileID: 89083784}
   m_Layer: 0
   m_Name: Pos2 (wall)
   m_TagString: Untagged
@@ -543,33 +542,11 @@ MonoBehaviour:
   cameraPosition: {fileID: 89083785}
   reachableNodes:
   - {fileID: 1253118030}
-  - {fileID: 0}
   interactables: []
   left: {fileID: 1203649651}
   right: {fileID: 460361640}
   back: {fileID: 0}
   col: {fileID: 0}
---- !u!135 &89083784
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 89083782}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 27.74
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &89083785
 Transform:
   m_ObjectHideFlags: 0
@@ -4441,7 +4418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 460361641}
   reachableNodes:
-  - {fileID: 0}
+  - {fileID: 1630567847}
   interactables: []
   left: {fileID: 89083783}
   right: {fileID: 243391038}
@@ -13359,8 +13336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraPosition: {fileID: 1203649653}
-  reachableNodes:
-  - {fileID: 0}
+  reachableNodes: []
   interactables: []
   left: {fileID: 243391038}
   right: {fileID: 89083783}
@@ -14030,7 +14006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1253118028}
   - component: {fileID: 1253118030}
-  - component: {fileID: 1253118029}
+  - component: {fileID: 1253118031}
   m_Layer: 0
   m_Name: Machine
   m_TagString: Untagged
@@ -14053,27 +14029,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 85933345}
   m_LocalEulerAnglesHint: {x: 33.434, y: 0, z: 0}
---- !u!65 &1253118029
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1253118027}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 9.79, y: 7.41, z: 2.4999998}
-  m_Center: {x: -0.6499966, y: 0.31000006, z: -1.76}
 --- !u!114 &1253118030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14093,8 +14048,29 @@ MonoBehaviour:
   - {fileID: 2794673}
   left: {fileID: 0}
   right: {fileID: 0}
-  back: {fileID: 89083783}
+  back: {fileID: 243391038}
   col: {fileID: 0}
+--- !u!135 &1253118031
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253118027}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 12.61
+  m_Center: {x: 0, y: -1.02, z: 8.77}
 --- !u!1 &1271242148
 GameObject:
   m_ObjectHideFlags: 0
@@ -18615,6 +18591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1630567848}
   - component: {fileID: 1630567847}
+  - component: {fileID: 1630567849}
   m_Layer: 0
   m_Name: TvGround
   m_TagString: Untagged
@@ -18657,6 +18634,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 125235577}
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+--- !u!135 &1630567849
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630567846}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 21.58
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1643016134
 PrefabInstance:
   m_ObjectHideFlags: 0
