@@ -18331,13 +18331,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625929130}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0033516982, y: 0.43445787, z: -0.00679031, w: 0.9006604}
-  m_LocalPosition: {x: 1.25, y: -3.9300003, z: -1.58}
-  m_LocalScale: {x: 2.5, y: 3, z: 8.36}
+  m_LocalRotation: {x: 0.007168649, y: -0.32855332, z: -0.002439834, w: 0.9444551}
+  m_LocalPosition: {x: 1.72, y: -3.8400002, z: -2.2200012}
+  m_LocalScale: {x: 7.619952, y: 5.8258033, z: 8.320323}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1536510012}
-  m_LocalEulerAnglesHint: {x: 0.684, y: 51.5, z: -0.534}
+  m_LocalEulerAnglesHint: {x: 0.684, y: -38.366, z: -0.534}
 --- !u!82 &1625929132
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18443,7 +18443,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625929130}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: a3a1f2006b4ceeb47ac6539aae3baae5, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: eade668c04a8aaf4683f8d2735051aeb, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -18455,12 +18455,12 @@ VideoPlayer:
   m_AspectRatio: 2
   m_DataSource: 0
   m_TimeUpdateMode: 2
-  m_PlaybackSpeed: 1
+  m_PlaybackSpeed: 1.2
   m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0.027
+  - 0.2
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -18546,7 +18546,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625929130}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &1625929137
 MonoBehaviour:
   m_ObjectHideFlags: 0
