@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     [Header("Node State")]
     public Node currentNode;
 
+    [Header("Puzzle State")]
+    public bool batteriesInserted = false;
+    public bool keypadCorrect = false;
+
     public delegate void InventoryChangeHandler();
     public event InventoryChangeHandler OnInventoryChanged;
 
