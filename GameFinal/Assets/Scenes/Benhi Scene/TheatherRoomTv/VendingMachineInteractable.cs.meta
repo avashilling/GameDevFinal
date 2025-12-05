@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a70bb7cd4111ebc46ae957c85a765e07
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - onPickupAudio: {instanceID: 0}
+  - onUseAudio: {instanceID: 0}
+  - col: {instanceID: 0}
+  - discAnimator: {instanceID: 0}
+  - discObject: {instanceID: 0}
+  - dropPosition: {instanceID: 0}
+  - kickSound: {fileID: 8300000, guid: 3dd9779c192d06c4ca2c4d6fe55f1688, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
