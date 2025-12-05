@@ -14170,8 +14170,7 @@ GameObject:
   - component: {fileID: 1315300922}
   - component: {fileID: 1315300921}
   - component: {fileID: 1315300920}
-  - component: {fileID: 1315300924}
-  - component: {fileID: 1315300923}
+  - component: {fileID: 1315300925}
   m_Layer: 0
   m_Name: DVD_Obj_Temp
   m_TagString: Untagged
@@ -14188,7 +14187,7 @@ Transform:
   m_GameObject: {fileID: 1315300918}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.42971677, z: -0, w: 0.90296376}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.08, z: 0}
   m_LocalScale: {x: 4.7564, y: 0.58257, z: 6.97903}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14213,8 +14212,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1945506, y: 2.528287, z: 1.1031641}
-  m_Center: {x: 0.09727532, y: 0.7641396, z: 0.01359897}
+  m_Size: {x: 1.1945506, y: 3.4505439, z: 1.1031641}
+  m_Center: {x: 0.09727532, y: 1.2252676, z: 0.013598988}
 --- !u!23 &1315300921
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14268,7 +14267,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315300918}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1315300923
+--- !u!114 &1315300925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14277,22 +14276,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1315300918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4af9eb7c257e3d47b8e3c6150a38902, type: 3}
+  m_Script: {fileID: 11500000, guid: ee51edbe1a2cff241b67885d85785e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoScreen: {fileID: 1625929137}
---- !u!114 &1315300924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1315300918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19d8b02b76e30ef4ebe04ed6dcfb7ca9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  onPickupAudio: {fileID: 0}
+  onUseAudio: {fileID: 0}
+  col: {fileID: 0}
+  videoPlayer: {fileID: 1625929133}
+  requiredItem: 4
 --- !u!1 &1315830944
 GameObject:
   m_ObjectHideFlags: 0
@@ -16973,6 +16964,7 @@ MonoBehaviour:
   interactables:
   - {fileID: 1741883853}
   - {fileID: 1593542651}
+  - {fileID: 1315300925}
   left: {fileID: 0}
   right: {fileID: 0}
   back: {fileID: 1630567847}
@@ -17007,7 +16999,7 @@ Transform:
   m_GameObject: {fileID: 1523453686}
   serializedVersion: 2
   m_LocalRotation: {x: -0.033500712, y: -0.9450802, z: 0.10245134, w: -0.30855277}
-  m_LocalPosition: {x: 6.6223526, y: -9.685963, z: -21.78254}
+  m_LocalPosition: {x: 2.06, y: -7.96, z: -16.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
