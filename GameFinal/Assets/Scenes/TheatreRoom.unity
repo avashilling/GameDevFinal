@@ -13055,10 +13055,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorImage: {fileID: 1628692966}
   defaultCursorSprite: {fileID: -159208799, guid: 99a4de553fa39794b94d641adeebb816, type: 3}
-  hoverCursorSprite: {fileID: -555168869, guid: 0f94e7904b6d27341b0030aaee354a8f, type: 3}
+  hoverCursorSprite: {fileID: -212284989, guid: a1c16b4b72d64cc419d4537143e00226, type: 3}
   cursorOffset: {x: 0, y: 0}
-  heldItemSize: 90
+  heldItemSize: 65
   defaultCursorSize: 32
+  hoverCursorSize: 40
+  instructionText: {fileID: 0}
 --- !u!4 &991050911
 Transform:
   m_ObjectHideFlags: 0
@@ -14103,7 +14105,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1bfdabc9344d81948b78c1fc3d26d7bd, type: 3}
   - {fileID: 8300000, guid: 435ae8c76aaa2834e870598ca4ef4a69, type: 3}
   - {fileID: 8300000, guid: 2b0c3de1c5e793a4da9692a9dbc664fd, type: 3}
-  musicVolume: 0.05
+  musicVolume: 0.489
+  arcadeVolume: 0.039
 --- !u!1 &1080776494
 GameObject:
   m_ObjectHideFlags: 0
