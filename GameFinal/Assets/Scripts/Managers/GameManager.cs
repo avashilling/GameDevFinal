@@ -33,11 +33,13 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         //DontDestroyOnLoad(gameObject);
+        Debug.Log("Gamemanager: Awake");
     }
 
     private void Start()
     {
         currentlyHeldItem = null;
+        Debug.Log("Gamemanager: Start");
     }
 
     private void Update()
@@ -122,6 +124,7 @@ public class GameManager : MonoBehaviour
 
     public void winArcadeGame()
     {
+        AudioManager.Instance.ArcadeMinigameStop();
         InventoryItem keyItem = new InventoryItem();
         keyItem.itemType = ItemType.Key;
         keyItem.icon = keySprite;

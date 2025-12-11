@@ -19,10 +19,19 @@ public class ClickRaycaster : MonoBehaviour
     // ---------------------------------------------------------
     private void RunHoverCheck()
     {
-        // Skip hover if over UI
-        if (IsPointerOverUI())
+        bool isOverUI = IsPointerOverUI();
+
+        // If over UI and NOT holding an item, show hover cursor
+        if (isOverUI)
         {
-            CursorManager.Instance.UpdateHoverState(false);
+            if (GameManager.Instance.currentlyHeldItem == null)
+            {
+                CursorManager.Instance.UpdateHoverState(true);
+            }
+            else
+            {
+                CursorManager.Instance.UpdateHoverState(false);
+            }
             return;
         }
 
