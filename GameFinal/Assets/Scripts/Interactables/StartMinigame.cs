@@ -13,10 +13,11 @@ public class StartMinigameInteractable : Interactable, IInteractable
             return;
         }
 
-        PlayUseAudio(); // Optional, safe if null
+        PlayUseAudio();
 
         // Start the minigame
         miniGameController.BeginGame();
+        AudioManager.Instance.ArcadeMinigameStart();
 
         // Remove this trigger from the scene
         Destroy(gameObject);

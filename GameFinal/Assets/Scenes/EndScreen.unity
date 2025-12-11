@@ -1053,6 +1053,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c985327db73dd7a468e112955bb91525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enterSceneSound: {fileID: 8300000, guid: cb7225ad0707a5248bc6b5c0b2f9a0b3, type: 3}
+  volume: 0.5
 --- !u!4 &1959421647
 Transform:
   m_ObjectHideFlags: 0
