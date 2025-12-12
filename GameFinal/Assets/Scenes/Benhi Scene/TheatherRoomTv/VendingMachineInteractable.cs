@@ -20,9 +20,17 @@ public class VendingMachineInteractable : Interactable, IInteractable
     public float shakeMagnitude = 0.1f;
 
     private int kickCount = 0;
+    private bool discHasDropped = false;
 
     public void Interact(InventoryItem heldItem)
     {
+        // If disc has already dropped, do nothing
+        if (discHasDropped)
+        {
+            HintManager.Instance.ShowHint("There's nothing left in the machine");
+            return;
+        }
+
         // Play kick animation
         if (vendingAnimation != null && vendingAnimation[kickAnimationName] != null)
         {
@@ -46,12 +54,13 @@ public class VendingMachineInteractable : Interactable, IInteractable
         if (kickCount >= 3)
         {
             DropDisc();
-            kickCount = 0;
         }
     }
 
     private void DropDisc()
     {
+        discHasDropped = true;
+
         if (droppedDisc != null && dropPosition != null)
         {
             // Move dropped disc into position
@@ -62,6 +71,7 @@ public class VendingMachineInteractable : Interactable, IInteractable
         // Hide the disc inside the vending machine
         if (discInsideMachine != null)
             discInsideMachine.SetActive(false);
+        HintManager.Instance.ShowHint("It dropped a tape!");
     }
 
     private IEnumerator ShakeCamera(Transform cam, float duration, float magnitude)
@@ -73,10 +83,8 @@ public class VendingMachineInteractable : Interactable, IInteractable
         {
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
-
             cam.localPosition = originalPos + new Vector3(x, y, 0);
             elapsed += Time.deltaTime;
-
             yield return null;
         }
 

@@ -40,14 +40,21 @@ public class VideoScreenInteractable : Interactable, IInteractable
     [SerializeField] private VideoPlayer videoPlayer;       // Reference to VideoPlayer
     [SerializeField] private ItemType requiredItem = ItemType.Disc;
     [SerializeField] private AudioClip endSound;            // Door close or any sound
+    private bool hasInsertedDisk;
 
     private bool hasPlayed = false; // Make sure the sound only plays once
 
     public void Interact(InventoryItem heldItem)
     {
+
+        if (hasInsertedDisk)
+        {
+            HintManager.Instance.ShowHint("It's already playing");
+            return;
+        }
         if (heldItem == null)
         {
-            HintManager.Instance.ShowHint("You need a Disc to start the video.");
+            HintManager.Instance.ShowHint("I could probably put a vhs tape in there");
             return;
         }
 
@@ -58,10 +65,11 @@ public class VideoScreenInteractable : Interactable, IInteractable
             return;
         }
 
+        hasInsertedDisk = true;
         // Correct item → play video
         videoPlayer.Play();
         PlayUseAudio();
-
+        hasInsertedDisk = true;
         // Remove the disc from inventory
         GameManager.Instance.RemoveSelectedItem();
 

@@ -22,11 +22,12 @@ public class KeypadController : MonoBehaviour
     public DoorInteractable targetDoor;    // Reference to the door this keypad unlocks
 
     private string currentInput = "";
+    private bool hasEnteredCode = false;
 
     private bool IsPowered()
     {
         return GameManager.Instance != null
-            && GameManager.Instance.batteriesInserted;
+            && GameManager.Instance.batteriesInserted && !hasEnteredCode;
     }
 
     private void Start()
@@ -50,7 +51,11 @@ public class KeypadController : MonoBehaviour
         {
             if (displayText != null)
                 displayText.text = "";
-            HintManager.Instance.ShowHint("It does not seem to be powered on");
+            if (!hasEnteredCode) { HintManager.Instance.ShowHint("It does not seem to be powered on"); }
+            else
+            {
+                HintManager.Instance.ShowHint("it beeped, maybe the door is open");
+            }
             return;
         }
 
@@ -100,7 +105,6 @@ public class KeypadController : MonoBehaviour
 
         if (currentInput == correctCode)
         {
-            Debug.Log("Correct code. Unlocking.");
 
             if (successSound != null)
                 AudioManager.Instance.PlaySFX(successSound);
@@ -116,8 +120,6 @@ public class KeypadController : MonoBehaviour
 
             if (failSound != null)
                 AudioManager.Instance.PlaySFX(failSound);
-
-            HintManager.Instance.ShowHint("Hm.. I better figure out the right code");
             currentInput = "";
             UpdateDisplay();
 
@@ -136,6 +138,7 @@ public class KeypadController : MonoBehaviour
         // Unlock the door
         if (targetDoor != null)
             targetDoor.unlocked = true;
+        hasEnteredCode = true;
     }
 
     private void OnCodeFail()

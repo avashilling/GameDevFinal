@@ -35,17 +35,17 @@ public class PlaceBattery : Interactable, IInteractable
             else
             {
                 // All battery slots are filled
-                HintManager.Instance.ShowHint("Both battery slots are already filled.");
+                HintManager.Instance.ShowHint("Both battery slots are already filled");
             }
         }
         else if(batteriesPlaced < 2)
         {
-            HintManager.Instance.ShowHint("I need a battery to place here.");
+            HintManager.Instance.ShowHint("There's 2 empty battery slots");
         }
 
         else
         {
-            HintManager.Instance.ShowHint("There's nothing else to click here");
+            HintManager.Instance.ShowHint("There's nothing else to touch here");
         }
     }
 }
