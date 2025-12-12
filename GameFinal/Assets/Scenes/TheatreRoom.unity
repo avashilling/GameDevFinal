@@ -704,7 +704,7 @@ MonoBehaviour:
   onUseAudio: {fileID: 0}
   col: {fileID: 0}
   itemData:
-    itemType: 5
+    itemType: 4
     icon: {fileID: 21300000, guid: 4cc22730b84b862479eb273dd4c83d4d, type: 3}
 --- !u!65 &89215155
 BoxCollider:
@@ -2543,7 +2543,7 @@ MonoBehaviour:
   onUseAudio: {fileID: 0}
   col: {fileID: 0}
   videoPlayer: {fileID: 1625929133}
-  requiredItem: 5
+  requiredItem: 4
   endSound: {fileID: 8300000, guid: a0df4afd6c68f4a4980a43e2d5d1d471, type: 3}
 --- !u!65 &260930050
 BoxCollider:
@@ -5840,6 +5840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df751f347d03dbb4c8577af53800043b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingNode: {fileID: 2066226613}
   maxSlots: 3
   inventory: []
   currentlyHeldItem:
@@ -16178,7 +16179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1296392856
 Transform:
   m_ObjectHideFlags: 0
@@ -16201,7 +16202,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296392855}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a9022c83704dc842a9b7868cbb9f79f, type: 3}
   m_Name: 
@@ -19597,10 +19598,7 @@ MonoBehaviour:
   cameraPosition: {fileID: 1523453689}
   reachableNodes: []
   interactables:
-  - {fileID: 1741883853}
-  - {fileID: 1593542651}
-  - {fileID: 0}
-  - {fileID: 2794673}
+  - {fileID: 260930049}
   left: {fileID: 0}
   right: {fileID: 0}
   back: {fileID: 1630567847}

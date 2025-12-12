@@ -54,6 +54,7 @@ public class VideoScreenInteractable : Interactable, IInteractable
         if (heldItem.itemType != requiredItem)
         {
             HintManager.Instance.ShowHint("This item cannot be used here.");
+            Debug.Log("You are holding a: " + heldItem.itemType);
             return;
         }
 

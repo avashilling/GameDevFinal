@@ -10,7 +10,7 @@ public class SceneInitializer : MonoBehaviour
 
         if (startingNode == null)
         {
-            Debug.LogError("SceneInitializer: No startingNode assigned in " + gameObject.scene.name);
+            Debug.Log("SceneInitializer: No startingNode assigned in " + gameObject.scene.name);
             return;
         }
 
@@ -25,7 +25,7 @@ public class SceneInitializer : MonoBehaviour
 
         if (GameManager.Instance == null)
         {
-            Debug.LogError("SceneInitializer: GameManager.Instance is null!");
+            Debug.Log("SceneInitializer: GameManager.Instance is null!");
             yield break;
         }
 

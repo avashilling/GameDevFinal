@@ -7579,7 +7579,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Left click to select, right to deselect
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7bb1d6df862b7ae438ed97e2ad6cb4a7, type: 2}
   m_sharedMaterial: {fileID: 5117735104017603327, guid: 7bb1d6df862b7ae438ed97e2ad6cb4a7, type: 2}
@@ -28967,12 +28967,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorImage: {fileID: 918901413}
   defaultCursorSprite: {fileID: -159208799, guid: 99a4de553fa39794b94d641adeebb816, type: 3}
-  hoverCursorSprite: {fileID: -555168869, guid: 0f94e7904b6d27341b0030aaee354a8f, type: 3}
+  hoverCursorSprite: {fileID: -212284989, guid: a1c16b4b72d64cc419d4537143e00226, type: 3}
   cursorOffset: {x: 0, y: 0}
-  heldItemSize: 90
+  heldItemSize: 65
   defaultCursorSize: 32
-  hoverCursorSize: 5
-  instructionText: {fileID: 0}
+  hoverCursorSize: 40
+  instructionText: {fileID: 163331399}
 --- !u!1 &717080789
 GameObject:
   m_ObjectHideFlags: 0
@@ -28989,7 +28989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &717080790
 Transform:
   m_ObjectHideFlags: 0
@@ -29012,7 +29012,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717080789}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a9022c83704dc842a9b7868cbb9f79f, type: 3}
   m_Name: 
@@ -36807,6 +36807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df751f347d03dbb4c8577af53800043b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingNode: {fileID: 602990410}
   maxSlots: 3
   inventory: []
   currentlyHeldItem:
@@ -65810,8 +65811,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 2016648242}
-  sfxSource: {fileID: 2016648243}
-  footstepSource: {fileID: 2016648244}
+  sfxSource: {fileID: 2016648244}
+  footstepSource: {fileID: 2016648243}
   arcadeMusicSource: {fileID: 0}
   backgroundMusic: {fileID: 8300000, guid: 520c4f1628e441e4d94f3320f5d2feb4, type: 3}
   footstepClips:
@@ -65819,8 +65820,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1bfdabc9344d81948b78c1fc3d26d7bd, type: 3}
   - {fileID: 8300000, guid: 435ae8c76aaa2834e870598ca4ef4a69, type: 3}
   - {fileID: 8300000, guid: 2b0c3de1c5e793a4da9692a9dbc664fd, type: 3}
-  musicVolume: 0.0755
-  arcadeVolume: 0.5
+  musicVolume: 0.489
+  arcadeVolume: 0.039
 --- !u!1 &2022762133
 GameObject:
   m_ObjectHideFlags: 0
