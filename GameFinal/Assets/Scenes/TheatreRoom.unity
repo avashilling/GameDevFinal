@@ -12787,8 +12787,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 83b9807e8e431504c9436aecd96954fc, type: 2}
+  m_sharedMaterial: {fileID: -5401508627855885906, guid: 83b9807e8e431504c9436aecd96954fc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13525,13 +13525,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1041532432}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.66279876, y: 0.01946682, z: 0.014540544, w: 0.74840325}
-  m_LocalPosition: {x: 0.057800263, y: -0.062199987, z: -0.46570313}
+  m_LocalRotation: {x: 0.7182677, y: 0.018293783, z: 0.01599131, w: 0.69534254}
+  m_LocalPosition: {x: 0.057800263, y: -0.062199987, z: -0.4721}
   m_LocalScale: {x: 24.934109, y: 2.0762475, z: 17.77488}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1950173041}
-  m_LocalEulerAnglesHint: {x: 82.531, y: -338.134, z: -338.534}
+  m_LocalEulerAnglesHint: {x: 86.658, y: -236.138, z: -236.324}
 --- !u!111 &1041532434
 Animation:
   m_ObjectHideFlags: 0
@@ -19804,8 +19804,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7bb1d6df862b7ae438ed97e2ad6cb4a7, type: 2}
-  m_sharedMaterial: {fileID: 5117735104017603327, guid: 7bb1d6df862b7ae438ed97e2ad6cb4a7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 83b9807e8e431504c9436aecd96954fc, type: 2}
+  m_sharedMaterial: {fileID: -5401508627855885906, guid: 83b9807e8e431504c9436aecd96954fc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19829,8 +19829,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.9
-  m_fontSizeBase: 15.9
+  m_fontSize: 13
+  m_fontSizeBase: 13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
