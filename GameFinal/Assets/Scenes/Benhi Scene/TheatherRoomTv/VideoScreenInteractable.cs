@@ -41,6 +41,8 @@ public class VideoScreenInteractable : Interactable, IInteractable
     [SerializeField] private ItemType requiredItem = ItemType.Disc;
     [SerializeField] private AudioClip endSound;            // Door close or any sound
     private bool hasInsertedDisk;
+    public TvLateGlitch tvGlitch;
+
 
     private bool hasPlayed = false; // Make sure the sound only plays once
 
@@ -66,8 +68,9 @@ public class VideoScreenInteractable : Interactable, IInteractable
         }
 
         hasInsertedDisk = true;
-        // Correct item → play video
+        // Correct item  play video
         videoPlayer.Play();
+        tvGlitch.StartGlitch();
         PlayUseAudio();
         hasInsertedDisk = true;
         // Remove the disc from inventory
